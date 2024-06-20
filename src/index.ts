@@ -2,16 +2,20 @@ import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 import { DbConnect } from "./db";
 
-import creations from "./routes/creations";
+import { myEnv } from "../conf";
+import flippers from "./routes/flippers";
+import makes from "./routes/makes";
 
 const app = new Hono();
 await DbConnect();
 
-const port = 3000;
-console.log(`Server is running on port ${port}`);
+const PORT = myEnv.SERVER_PORT;
+console.log(`Server is running on port ${PORT}`);
 
-// 3000/api/creations/
-app.route("/api", creations);
+// 3000/api/flippers/
+app.route("/api", flippers);
+// 3000/api/flippers/
+app.route("/api", makes);
 
 app.use("*", (c) => {
   return c.json({ msg: "404 oups" });
@@ -19,5 +23,5 @@ app.use("*", (c) => {
 
 serve({
   fetch: app.fetch,
-  port,
+  port: parseInt(PORT),
 });

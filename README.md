@@ -1,57 +1,84 @@
-# Hono 🔥- Mongoose - Ts
+# Flipper APi
 
-_Copy .env.example to a .env file_
-  
+## Description
 
--  `npm install`
--  `npm run dev`
+This is a simple API that allows you to manage your flipper machines. You can create, update, delete and list flipper machines.
 
-## Proposition de modèle
-**creations**
- ```js   
- {
-	imgUri: "https://cdn-www.konbini.com/files/2023/05/Sans-titre-15.png?width=1920&quality=undefined&format=webp",
-	prompt: "violet grimes with elves ears",
-	categories: ["dall-e","fantasy" ],
-	author: {
-		firstName: "Jean-Michel",
-		lastName: "AI"
-	},
-	publicationDate: "2024-02-15T11:34:43.542Z",
-	createdAt: "2024-02-15T11:34:43.542Z",
-	updatedAt: "2024-02-15T11:35:43.542Z"
-}
-```
-**comments**
- ```js  
- {
-	comment:"",
-	isPublish:true,
-	author: {
-		firstName: "Maryse",
-		lastName: "Comment"
-	},
-	creationParentRef:"65cdf6d3f25e19cef0a2ba92",
-	publicationDate: "2024-02-15T12:34:43.542Z"
+## Model opinions
+
+### Make
+
+Le modèle du flipper est le suivant :
+
+```ts
+interface IMake {
+  name: string;
+  description: string;
+  logo_url: string;
+  guide_url: string;
 }
 ```
 
+Il a été décidé que le modèle du flipper serait un objet imbriqué dans le modèle de la machine. Cela permet de simplifier la gestion des machines et de leurs modèles.
 
-  ## ToDo
- - [ ] Renseigner les vars pour se connecter à votre instance Atlas
- - [ ] Créer un premier modèle mongoose simple "creations"
- - [ ] Brancher le /creations avec la bonne req mongo (all)
- - [ ] Compléter le modèle avec des contraintes
- - [ ] Brancher toutes les opérations CRUD sur /creations
- - [ ] Créer le modèle "comments" qui aura une ref vers son parent "creations"
- - [ ] Créer un queryHelper pour gérer les url query params (pagination, limit, projection)
- - [ ] Ajouter un middleware pour garder le nombre de comments synchro sur le parent
+Accessoirement, les images sont stockés sous forme d'URLs. Cela permet de simplifier la gestion des images et de ne pas surcharger la base de données. De plus, cela permet de gérer les images de manière plus efficace.
 
-## Bonus
-Quelques exemples de prompts ici: 
+### Flipper
 
-[public prompts](https://publicprompts.art/)
+Le modèle du flipper est le suivant :
 
-[best dalle-3 prompts](https://anakin.ai/blog/best-dalle-3-prompts/)
+```ts
+interface ICarasteristics {
+  release_date: string;
+  grade: number;
+}
 
-[Best Firefly promps](https://imaginewithrashid.com/21-best-adobe-firefly-prompts-for-amazing-pictures/)
+interface IFlipper {
+  name: string;
+  price: number;
+  state: string;
+  make: Types.ObjectId;
+  caracteristics: ICarasteristics;
+  front_image: string;
+  back_image: string;
+  side_image: string;
+}
+```
+
+Les propriétés du flipper ont été définis en accordance avec les besoins de l'application. Les images sont stockés sous forme d'URLs pour les mêmes raisons que pour le modèle du flipper.
+
+Remarque: Le modèle du flipper est un objet imbriqué dans le modèle de la machine. Cela permet de simplifier la gestion des machines et de leurs modèles.
+
+## Axes d'amélioration
+
+### Search de Flipper
+
+Pour améliorer la recherche de flipper, il serait pértinent d'ajouter des filtres commme:
+
+- release_date
+- grade
+- price
+
+Cela permettrait de faciliter la recherche de flipper et de trouver plus facilement le flipper qui correspond aux besoins de l'utilisateur.
+
+### Accéler présentation en liste des Flipper
+
+Pour améliorer la présentation des flipper en liste, il serait pértinent d'ajouter des informations supplémentaires comme:
+
+
+
+
+## Installation
+
+```sh
+npm install
+```
+
+## Running the app
+
+```sh
+npm run dev
+```
+
+## Test
+
