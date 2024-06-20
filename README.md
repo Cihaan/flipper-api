@@ -63,9 +63,9 @@ Cela permettrait de faciliter la recherche de manière plus affinées de flipper
 
 ### Accéler présentation en liste des Flipper
 
-Pour améliorer la présentation des flipper en liste, il serait pértinent d'ajouter des informations supplémentaires comme:
+Pour améliorer la présentation des flipper en liste, il serait pértinent de retourner les flippers sous forme de pagination. Cela permettrait de limiter le nombre de flippers retournés et de faciliter la navigation de l'utilisateur.
 
-
+De plus, il serait intéressant de ne pas retourner les détails du flippers comme les images et la marque. Cela permettrait de limiter la taille des données retournées et de faciliter le traitement des données, ils pourraient être retournés dans un second appel avec un Get One.
 
 
 ## Installation
