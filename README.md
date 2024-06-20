@@ -59,7 +59,7 @@ Pour améliorer la recherche de flipper, il serait pértinent d'ajouter des filt
 - grade
 - price
 
-Cela permettrait de faciliter la recherche de flipper et de trouver plus facilement le flipper qui correspond aux besoins de l'utilisateur.
+Cela permettrait de faciliter la recherche de manière plus affinées de flipper et de trouver plus facilement le flipper qui correspond aux besoins de l'utilisateur.
 
 ### Accéler présentation en liste des Flipper
 
